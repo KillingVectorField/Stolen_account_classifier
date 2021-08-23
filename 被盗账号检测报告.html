@@ -1,0 +1,520 @@
+<!DOCTYPE html><html><head>
+      <title>&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x68C0;&#x6D4B;&#x62A5;&#x544A;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\zhixuanshao\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.22\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E6%91%98%E8%A6%81">&#x6458;&#x8981;</h1>
+
+<ul>
+<li>
+<p>&#x6211;&#x4EEC;&#x9996;&#x5148;&#x5BF9;&#x6BD4;&#x4E86;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x4E0E;&#x6B63;&#x5E38;&#x8D26;&#x53F7;&#x7684;&#x7279;&#x5F81;&#x5206;&#x5E03;&#x3002;&#x6709;&#x663E;&#x8457;&#x5DEE;&#x5F02;&#x7684;&#x7279;&#x5F81;&#x6709;&#x76AE;&#x80A4;&#x6570; <code>skin_num</code>&#x3001;&#x767B;&#x9646;&#x6B21;&#x6570; <code>login_num</code>&#x3001;&#x8D26;&#x53F7;&#x7B49;&#x7EA7; <code>level</code>&#x3001;&#x88AB;&#x70B9;&#x8D5E;&#x6570; <code>upvote</code>&#x3001;&#x5220;&#x9664;&#x597D;&#x53CB;&#x6570; <code>del_friend_num</code>&#x3001;&#x5E73;&#x53F0;&#x597D;&#x53CB;&#x6570; <code>friend_num_plat</code>&#x7B49;&#x3002;</p>
+</li>
+<li>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x89C2;&#x5BDF;&#x5230;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x7684;&#x53D8;&#x5316;&#x3002;&#x5728;&#x7F51;&#x7EDC;&#x4E2D;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x7EA6;1400&#x4E2A;&#x7ED3;&#x70B9;&#x5F62;&#x6210;&#x7684;&#x805A;&#x7C7B;&#xFF0C;&#x805A;&#x7C7B;&#x5185;&#x7684;&#x597D;&#x53CB;&#x5173;&#x7CFB;&#x5728;06/28&#x524D;&#x663E;&#x8457;&#x589E;&#x52A0;&#xFF0C;&#x4F46;&#x5728;&#x4E4B;&#x540E;&#x53C8;&#x9010;&#x6E10;&#x51CF;&#x5C11;&#x3002;&#x6211;&#x4EEC;&#x7ED9;&#x51FA;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x89E3;&#x91CA;&#xFF1A;&#x8FD9;&#x6279;&#x8D26;&#x53F7;&#x662F;&#x88AB;&#x540C;&#x4E00;&#x4E2A;&#x56E2;&#x4F19;&#x76D7;&#x7684;&#xFF0C;&#x5728;&#x8BE5;&#x56E2;&#x4F19;&#x5185;&#x90E8;&#x4E92;&#x76F8;&#x901A;&#x8FC7;&#x8FD9;&#x6279;&#x8D26;&#x53F7;&#x4EA4;&#x6D41;&#x3001;&#x4EA4;&#x6613;&#x3001;&#x5BF9;&#x6218;&#x3002;</p>
+</li>
+<li>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x7B5B;&#x9009;&#x51FA;&#x76F8;&#x5173;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x8BAD;&#x7EC3;&#x4E86;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x8BE5;&#x5206;&#x7C7B;&#x5668;&#x5BF9;&#x6B63;&#x6837;&#x672C;&#xFF08;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#xFF09;&#x7684;&#x51C6;&#x786E;&#x7387;&#x4E3A;81.7%&#xFF0C;&#x53EC;&#x56DE;&#x7387;&#x4E3A;73.5%&#x3002;&#x8BE5;&#x5206;&#x7C7B;&#x5668;&#x7ED9;&#x51FA;&#x7684;&#x7279;&#x5F81;&#x91CD;&#x8981;&#x6027;&#x524D;&#x4E94;&#x4F4D;&#x4E3A;<code>skin_num</code>, <code>upvote</code>, <code>del_friend_num</code>, <code>login_num</code>, <code>active_plat_num</code>&#x3002;</p>
+</li>
+</ul>
+<h1 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%88%86%E5%B8%83%E5%AF%B9%E6%AF%94">&#x7279;&#x5F81;&#x5206;&#x5E03;&#x5BF9;&#x6BD4;</h1>
+
+<p>&#x73B0;&#x6709;&#x6570;&#x636E;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x5927;&#x81F4;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E09;&#x7C7B;&#x3002;</p>
+<ul>
+<li>&#x73A9;&#x5BB6;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#xFF1A;<code>onlinetime</code>, <code>level</code>, <code>upvote</code>, <code>signup_num</code>, <code>achievement_num</code>, <code>login_num</code>, <code>login_days</code>, <code>round_num</code>, <code>round_squad_num</code>, <code>segment</code>, <code>reward_num</code>, <code>skin_num</code></li>
+<li>&#x73A9;&#x5BB6;&#x4E92;&#x52A8;&#x4FE1;&#x606F;&#xFF1A;<code>friend_num_plat</code>, <code>active_plat_num</code>, <code>friend_num_game</code>,<code>active_game_num</code>, <code>chat_num</code>, <code>friend_chat_num</code>, <code>send_gold_num</code>, <code>draw_gold_num</code>, <code>vote_num</code>, <code>friend_vote_num</code>, <code>recruit_num</code>, <code>friend_recruit_num</code>, <code>reply_recruit_num</code>, <code>team_num</code>, <code>leader_team_num</code>, <code>invite_team_num</code>, <code>apply_relation_num</code>, <code>reply_relation_num</code>, <code>del_friend_num</code>, <code>reject_friend_num</code>, <code>del_friend_apply_num</code>, <code>reject_relation_num</code>, <code>del_intimacy_num</code>, <code>accept_invite_team_num</code>, <code>reject_invite_team_num</code>, <code>beaccept_invite_team_num</code>, <code>bereject_invite_team_num</code>, <code>beaccept_apply_team_num</code>, <code>bereject_apply_team_num</code>, <code>accept_apply_team_num</code>, <code>reject_apply_team_num</code></li>
+<li>&#x73A9;&#x5BB6;&#x6218;&#x6597;&#x8868;&#x73B0;&#xFF1A;<code>avg_kill_count</code>, <code>avg_hit_rate</code>, <code>chicken_rate</code>, <code>top10_rate</code>, <code>avg_damage</code>, <code>avg_box_num</code>, <code>avg_survivaltime</code>, <code>avg_moving</code>, <code>head_shoot_rate</code>, <code>avg_gun_kill</code>, <code>avg_assist</code>, <code>avg_healtimes</code>, <code>avg_healamount</code>, <code>avg_cure</code>, <code>avg_hit_distance</code>, <code>final_score</code></li>
+</ul>
+<p>&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x4E0E;&#x6B63;&#x5E38;&#x8D26;&#x53F7;&#x5728;&#x6218;&#x6597;&#x8868;&#x73B0;&#x4E0A;&#x6CA1;&#x6709;&#x660E;&#x663E;&#x5DEE;&#x5F02;&#x3002;&#x5DEE;&#x5F02;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x662F;&#x5982;&#x4E0B;&#x7279;&#x5F81;&#xFF1A;&#xFF08;&#x7528;&#x7684;&#x662F;06/28&#x7684;&#x88AB;&#x76D7;&#x8D26;&#x6237;&#x7279;&#x5F81;&#xFF09;</p>
+<ul>
+<li>
+<p><code>skin_num</code> &#x88AB;&#x76D7;&#x8D26;&#x6237;&#x4E00;&#x822C;&#x76AE;&#x80A4;&#x6570;&#x6BD4;&#x8F83;&#x591A;&#x3002;&#x88AB;&#x76D7;&#x53F7;&#x7684;&#x73A9;&#x5BB6;&#x4E00;&#x822C;&#x662F;&#x5145;&#x503C;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x8D26;&#x53F7;&#xFF0C;&#x8D26;&#x53F7;&#x6BD4;&#x8F83;&#x6709;&#x4EF7;&#x503C;&#x3002;<br>
+<img src="figures/comparison_0614_skin_num.png"></p>
+</li>
+<li>
+<p><code>onlinetime</code>, <code>level</code> &#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x6BD4;&#x8F83;&#x591A;&#x6E38;&#x620F;&#x65F6;&#x957F;&#x8F83;&#x957F;&#x3001;&#x7B49;&#x7EA7;&#x8F83;&#x9AD8;&#x7684;&#x8D26;&#x53F7;<br>
+<img src="figures/comparison_0614_onlinetime.png"><br>
+<img src="figures/comparison_0614_level.png"></p>
+</li>
+<li>
+<p><code>signup_num</code>, <code>login_num</code> &#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x4E00;&#x822C;&#x767B;&#x5F55;&#x3001;&#x7B7E;&#x5230;&#x8F83;&#x4E3A;&#x9891;&#x7E41;<br>
+<img src="figures/comparison_0614_signup_num.png"><br>
+<img src="figures/comparison_0614_login_days.png"></p>
+</li>
+<li>
+<p><code>upvote</code> &#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x4E00;&#x822C;&#x88AB;&#x70B9;&#x8D5E;&#x6570;&#x4E5F;&#x5F88;&#x591A;<br>
+<img src="figures/comparison_0614_upvote.png"></p>
+</li>
+<li>
+<p><code>del_friend_num</code> &#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x6709;&#x8F83;&#x591A;&#x7684;&#x5220;&#x597D;&#x53CB;&#x884C;&#x4E3A;<br>
+<img src="figures/comparison_0614_del_friend_num.png"></p>
+</li>
+<li>
+<p><code>friend_num_plat</code>, <code>active_plat_num</code> &#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x7684;&#x5E73;&#x53F0;&#x597D;&#x53CB;&#x666E;&#x904D;&#x8F83;&#x5C11;<br>
+<img src="figures/comparison_0614_friend_num_plat.png"><br>
+<img src="figures/comparison_0614_active_plat_num.png"></p>
+</li>
+<li>
+<p><code>chat_num</code>, <code>friend_chat_num</code> &#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x804A;&#x5929;&#x6570;&#x4E5F;&#x8F83;&#x591A;&#xFF0C;&#x6216;&#x8BB8;&#x53EF;&#x5F52;&#x56E0;&#x4E8E;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x4E4B;&#x95F4;&#x6709;&#x4EA4;&#x6D41;<br>
+<img src="figures/comparison_0614_chat_num.png"></p>
+</li>
+<li>
+<p><code>reject_invite_team_num</code> &#x90E8;&#x5206;&#x8D26;&#x53F7;&#x5728;&#x88AB;&#x76D7;&#x540E;&#xFF0C;&#x5F80;&#x5F80;&#x62D2;&#x7EDD;&#x597D;&#x53CB;&#x7EC4;&#x961F;&#x9080;&#x8BF7;<br>
+<img src="figures/comparison_0614_reject_invite_team_num.png"></p>
+</li>
+</ul>
+<h1 class="mume-header" id="%E8%A2%AB%E7%9B%97%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%BA%B5%E5%90%91%E7%89%B9%E5%BE%81%E5%8F%98%E5%8C%96">&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x7684;&#x7EB5;&#x5411;&#x7279;&#x5F81;&#x53D8;&#x5316;</h1>
+
+<p>&#x5168;&#x4F53;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x5171;&#x6709;44226&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x5176;&#x7279;&#x5F81;&#x5747;&#x503C;&#x7EB5;&#x5411;&#x53D8;&#x5316;&#x7528;&#x84DD;&#x8272;&#x6298;&#x7EBF;&#x8868;&#x793A;&#x3002;&#x901A;&#x8FC7;&#x5BF9;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x7684;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x5206;&#x6790;&#x6211;&#x4EEC;&#x8FD8;&#x5B9A;&#x4F4D;&#x4E86;&#x4E00;&#x4E2A;&#x76D7;&#x53F7;&#x56E2;&#x4F19;&#xFF0C;&#x5171;&#x6709;1351&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x5176;&#x53D8;&#x5316;&#x7528;&#x6A59;&#x8272;&#x6298;&#x73B0;&#x8868;&#x793A;&#x3002;<br>
+<img src="figures/longitudinal_skin_num.png"><br>
+<img src="figures/longitudinal_del_friend_num.png"><br>
+&#x5220;&#x9664;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x5448;&#x73B0;&#x5148;&#x589E;&#x540E;&#x51CF;&#x7684;&#x8D8B;&#x52BF;&#x3002;&#x53EF;&#x80FD;&#x7684;&#x539F;&#x56E0;&#xFF1A;&#x5728;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x88AB;&#x5B9A;&#x4F4D;&#x524D;&#xFF0C;&#x5F80;&#x5F80;&#x5927;&#x91CF;&#x5220;&#x9664;&#x6E38;&#x620F;&#x597D;&#x53CB;&#x3002;<br>
+<img src="figures/longitudinal_login_num.png"><br>
+<img src="figures/longitudinal_login_days.png"><br>
+&#x5728;7/5&#x4E4B;&#x540E;&#xFF0C;&#x767B;&#x5F55;&#x6B21;&#x6570;&#x548C;&#x767B;&#x9646;&#x5929;&#x6570;&#x90FD;&#x5448;&#x73B0;&#x51FA;&#x66F4;&#x660E;&#x663E;&#x7684;&#x4E0B;&#x964D;&#x8D8B;&#x52BF;&#x3002;<br>
+<img src="figures/longitudinal_friend_num_game.png"><br>
+&#x6E38;&#x620F;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x5448;&#x4E0B;&#x964D;&#x8D8B;&#x52BF;&#x3002;&#x540C;&#x65F6;&#x6CE8;&#x610F;&#x5230;&#x56E2;&#x4F19;&#x5185;&#x7684;&#x6E38;&#x620F;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x5148;&#x4E0A;&#x5347;&#x540E;&#x4E0B;&#x964D;&#xFF0C;&#x8FD9;&#x4E0E;&#x6211;&#x4EEC;&#x5BF9;&#x597D;&#x53CB;&#x7F51;&#x7EDC;&#x7684;&#x5206;&#x6790;&#x7ED3;&#x679C;&#x4E00;&#x81F4;&#xFF0C;&#x8BE5;&#x805A;&#x7C7B;&#x7684;&#x8FB9;&#x6570;&#x5148;&#x589E;&#x52A0;&#xFF0C;&#x5728;6/28&#x8FBE;&#x5230;&#x9876;&#x5CF0;&#xFF0C;&#x5728;&#x6B64;&#x4E4B;&#x540E;&#x53C8;&#x9010;&#x6E10;&#x201C;&#x74E6;&#x89E3;&#x201D;&#xFF0C;&#x8FB9;&#x6570;&#x5F00;&#x59CB;&#x51CF;&#x5C11;&#x3002;<br>
+<img src="figures/longitudinal_friend_num_plat.png"><br>
+&#x5E73;&#x53F0;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x4E5F;&#x5448;&#x73B0;&#x4E0B;&#x964D;&#x8D8B;&#x52BF;&#x3002;</p>
+<h1 class="mume-header" id="%E8%A2%AB%E7%9B%97%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%89%B9%E5%BE%81%E5%88%86%E5%B8%83%E5%8F%98%E5%8C%96">&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x7684;&#x7279;&#x5F81;&#x5206;&#x5E03;&#x53D8;&#x5316;</h1>
+
+<ul>
+<li>
+<p>&#x5148;&#x770B;<strong>&#x5168;&#x4F53;&#x88AB;&#x76D7;&#x8D26;&#x53F7;</strong>&#x7684;&#x7279;&#x5F81;&#x5206;&#x5E03;&#x53D8;&#x5316;&#x3002;<br>
+<img src="figures/kde_comparison_all_accounts_friend_num_game.png"><br>
+<img src="figures/kde_comparison_all_accounts_friend_num_plat.png"><br>
+&#x548C;&#x524D;&#x9762;&#x6298;&#x7EBF;&#x56FE;&#x6240;&#x53CD;&#x6620;&#x7684;&#x4E00;&#x6837;&#xFF0C;&#x6E38;&#x620F;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x5448;&#x660E;&#x663E;&#x4E0B;&#x964D;&#xFF1B;&#x540C;&#x65F6;&#xFF0C;&#x90E8;&#x5206;&#x8D26;&#x53F7;&#x5E73;&#x53F0;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x6E05;&#x96F6;&#x3002;<br>
+<img src="figures/kde_comparison_all_accounts_skin_num.png"><br>
+&#x90E8;&#x5206;&#x8D26;&#x53F7;&#x7684;&#x76AE;&#x80A4;&#x6570;&#x4E5F;&#x6E05;&#x96F6;&#x4E86;<br>
+<img src="figures/hist_comparison_all_accounts_login_days.png"><br>
+&#x73A9;&#x5BB6;&#x767B;&#x5F55;&#x5929;&#x6570;&#x5728;06/28&#x540E;&#x4E5F;&#x6709;&#x6240;&#x4E0B;&#x964D;</p>
+</li>
+<li>
+<p>&#x518D;&#x770B;<strong>&#x76D7;&#x53F7;&#x56E2;&#x4F19;</strong>&#x7684;&#x7279;&#x5F81;&#x5206;&#x5E03;&#x53D8;&#x5316;&#x3002;<br>
+<img src="figures/kde_comparison_cluster_friend_num_game.png"><br>
+&#x56E2;&#x4F19;&#x5185;&#x7684;&#x6E38;&#x620F;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x5148;&#x4E0A;&#x5347;&#x540E;&#x4E0B;&#x964D;<br>
+<img src="figures/kde_comparison_cluster_friend_num_plat.png"><br>
+&#x56E2;&#x4F19;&#x5185;&#x90E8;&#x5206;&#x8D26;&#x53F7;&#x5E73;&#x53F0;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x6E05;&#x96F6;<br>
+<img src="figures/kde_comparison_cluster_skin_num.png"><br>
+&#x56E2;&#x4F19;&#x5185;&#x90E8;&#x5206;&#x8D26;&#x53F7;&#x7684;&#x76AE;&#x80A4;&#x6570;&#x4E5F;&#x6E05;&#x96F6;&#x4E86;</p>
+</li>
+</ul>
+<h1 class="mume-header" id="%E8%A2%AB%E7%9B%97%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90">&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x7684;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x5206;&#x6790;</h1>
+
+<p>&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x4E2D;&#x6709;&#x4E00;&#x4E9B;&#x8FDE;&#x901A;&#x7684;&#x5927;&#x805A;&#x7C7B;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x56E2;&#x4F19;&#x76D7;&#x53F7;&#x5F15;&#x8D77;&#x7684;&#xFF0C;&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x56FE;&#x4E2D;&#x8282;&#x70B9;&#x7684;&#x5927;&#x5C0F;&#x6B63;&#x6BD4;&#x4E8E;&#x767B;&#x5F55;&#x65F6;&#x957F;<br>
+<img src="figures/steal_cluster_1004.png"><br>
+&#x5728;&#x5305;&#x62EC;&#x6B63;&#x5E38;&#x8D26;&#x53F7;&#x7684;&#x5168;&#x73A9;&#x5BB6;&#x7F51;&#x7EDC;&#x4E2D;&#xFF0C;&#x8BE5;&#x56E2;&#x4F19;&#x4ECD;&#x7136;&#x663E;&#x793A;&#x51FA;&#x660E;&#x663E;&#x7684;&#x805A;&#x7C7B;&#x6027;&#x8D28;&#x3002;&#x4E0B;&#x56FE;&#x4E2D;&#x7EA2;&#x8272;&#x7684;&#x4E3A;&#x88AB;&#x76D7;&#x8D26;&#x6237;&#xFF0C;&#x5176;&#x4E2D;&#x65B9;&#x5F62;&#x7684;&#x4E3A;&#x4E0A;&#x56FE;&#x7684;&#x76D7;&#x53F7;&#x56E2;&#x4F19;&#x8D26;&#x6237;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F88;&#x591A;&#x65B9;&#x5F62;&#x8282;&#x70B9;&#x805A;&#x96C6;&#x5728;&#x4E00;&#x8D77;&#xFF08;&#x5C24;&#x5176;&#x662F;&#x56FE;&#x7247;&#x7684;&#x4E2D;&#x90E8;&#x548C;&#x4E0B;&#x65B9;&#xFF09;<br>
+<img src="figures/steal_cluster_supplement40.png"></p>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x6279;&#x8D26;&#x53F7;&#x662F;&#x88AB;&#x540C;&#x4E00;&#x4E2A;&#x56E2;&#x4F19;&#x76D7;&#x7684;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x56E2;&#x4F19;&#x5185;&#x90E8;&#xFF0C;&#x8FD9;&#x6279;&#x73A9;&#x5BB6;&#x4E4B;&#x95F4;&#x4E92;&#x76F8;&#x901A;&#x8FC7;&#x8FD9;&#x6279;&#x8D26;&#x53F7;&#x4EA4;&#x6D41;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x770B;<strong>&#x662F;&#x5426;&#x8FD9;&#x6279;&#x8D26;&#x53F7;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x662F;&#x8FD1;&#x671F;&#x88AB;&#x76D7;&#x4EE5;&#x540E;&#x624D;&#x6210;&#x4E3A;&#x597D;&#x53CB;&#x7684;</strong>&#x3002;</p>
+<p>&#x4E0B;&#x56FE;&#x662F;&#x8BE5;&#x201C;&#x56E2;&#x4F19;&#x201D;&#x5728;06/07&#x548C;06/28&#x7684;&#x597D;&#x53CB;&#x7F51;&#x7EDC;&#x3002;&#x8BE5;&#x56E2;&#x4F19;&#x5171;&#x6709;1449&#x4E2A;&#x7ED3;&#x70B9;&#x3002;&#x4ECE;06/07-06/28&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x65B0;&#x589E;&#x597D;&#x53CB;&#x5173;&#x7CFB;714&#x5BF9;&#xFF0C;&#x5220;&#x9664;&#x597D;&#x53CB;&#x5173;&#x7CFB;94&#x5BF9;&#x3002;&#x5728;06/07&#x65F6;&#xFF0C;&#x5171;&#x6709;1012&#x6761;&#x8FB9;&#xFF0C;532&#x4E2A;&#x5B64;&#x7ACB;&#x7ED3;&#x70B9;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5176;&#x4E2D;&#x7EA2;&#x8272;&#x8FB9;&#x4E3A;06/28&#x524D;&#x88AB;&#x5220;&#x9664;&#x7684;&#x597D;&#x53CB;&#x5173;&#x7CFB;&#xFF0C;&#x5171;94&#x6761;&#x3002;<br>
+<img src="figures/giant_cluster_0607.png"></p>
+<p>&#x5230;06/28&#x65F6;&#xFF0C;&#x5171;&#x6709;1632&#x6761;&#x8FB9;&#xFF0C;4&#x4E2A;&#x5B64;&#x7ACB;&#x7ED3;&#x70B9;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5176;&#x4E2D;&#x7EFF;&#x8272;&#x8FB9;&#x4E3A;06/28&#x524D;&#x65B0;&#x589E;&#x7684;&#x597D;&#x53CB;&#x5173;&#x7CFB;&#xFF0C;&#x5171;714&#x6761;&#x3002;<br>
+<img src="figures/giant_cluster_0628.png"></p>
+<p>&#x7136;&#x800C;&#x4ECE;06/28&#x5230;07/26&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x597D;&#x53CB;&#x6570;&#x91CF;&#x53C8;&#x5927;&#x5E45;&#x4E0B;&#x964D;&#x3002;&#x5171;&#x65B0;&#x589E;115&#x6761;&#x8FB9;&#xFF0C;&#x51CF;&#x5C11;870&#x6761;&#x8FB9;&#xFF0C;07/26&#x5269;&#x4F59;769&#x6761;&#x8FB9;&#x3002;&#x4E0B;&#x56FE;&#x4E3A;06/28&#x7684;&#x597D;&#x53CB;&#x7F51;&#x7EDC;&#xFF0C;&#x7EA2;&#x8272;&#x4E3A;&#x4E4B;&#x540E;&#x5220;&#x9664;&#x7684;&#x8FB9;<br>
+<img src="figures/giant_cluster_0628(1).png"><br>
+&#x4E0B;&#x56FE;&#x4E3A;07/26&#x7684;&#x597D;&#x53CB;&#x7F51;&#x7EDC;&#xFF0C;&#x7EFF;&#x8272;&#x4E3A;&#x65B0;&#x589E;&#x7684;&#x8FB9;<br>
+<img src="figures/giant_cluster_0726.png"></p>
+<h1 class="mume-header" id="%E5%8A%A0%E5%A5%BD%E5%8F%8B%E6%95%B0%E6%8D%AE%E6%B5%81%E5%88%86%E6%9E%90">&#x52A0;&#x597D;&#x53CB;&#x6570;&#x636E;&#x6D41;&#x5206;&#x6790;</h1>
+
+<p>&#x6B64;&#x5916;&#xFF0C;&#x52A0;&#x597D;&#x53CB;&#x6570;&#x636E;&#x6D41;&#x4E5F;&#x53CD;&#x6620;&#x4E86;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x5728;&#x88AB;&#x76D7;&#x53F7;&#x4E92;&#x52A8;&#x589E;&#x52A0;&#x3002;&#x4E0B;&#x56FE;&#x662F;&#x88AB;&#x76D7;&#x8D26;&#x53F7;<strong>&#x4E92;&#x76F8;</strong>&#x6DFB;&#x52A0;&#x52A0;&#x597D;&#x53CB;&#x7684;&#x65E5;&#x671F;&#x5206;&#x5E03;<br>
+<img src="figures/add_friend_flow_both_steal.png"><br>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5728;07/01&#x524D;&#x6709;&#x660E;&#x663E;&#x7684;&#x4E0A;&#x5347;&#x8D8B;&#x52BF;&#xFF08;&#x589E;&#x957F;&#x81F3;&#x63A5;&#x8FD1;&#x4E24;&#x500D;&#xFF09;&#x3002;&#x4E0E;&#x4E4B;&#x5BF9;&#x6BD4;&#x7684;&#x662F;&#x4E0B;&#x56FE;&#xFF0C;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x6DFB;&#x52A0;&#x6B63;&#x5E38;&#x8D26;&#x53F7;&#x6570;&#x636E;&#x6D41;&#x7684;&#x65E5;&#x671F;&#x5206;&#x5E03;<br>
+<img src="figures/add_friend_flow_across_steal.png"><br>
+&#x5E76;&#x6CA1;&#x6709;&#x5982;&#x6B64;&#x660E;&#x663E;&#x7684;&#x4E0A;&#x5347;&#x8D8B;&#x52BF;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x53EF;&#x4EE5;&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x4E00;&#x4E0B;&#x6211;&#x4EEC;&#x6B64;&#x524D;&#x5B9A;&#x4F4D;&#x7684;&#x76D7;&#x53F7;&#x56E2;&#x4F19;&#x3002;&#x4E0B;&#x56FE;&#x662F;<strong>&#x76D7;&#x53F7;&#x56E2;&#x4F19;&#x5185;</strong>&#x7684;&#x6DFB;&#x52A0;&#x597D;&#x53CB;&#x6570;&#x636E;&#x6D41;&#x5206;&#x5E03;<br>
+<img src="figures/add_friend_flow_within_cluster.png"><br>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5728; 06/01-07/01&#x671F;&#x95F4;&#x51FA;&#x73B0;&#x4E86;&#x663E;&#x8457;&#x4E0A;&#x5347;&#xFF0C;&#x7136;&#x800C;&#x5728;07/01&#x4E4B;&#x540E;&#x53C8;&#x91CD;&#x65B0;&#x56DE;&#x843D;&#x3002;</p>
+<h1 class="mume-header" id="%E5%BC%82%E5%B8%B8%E8%B4%A6%E5%8F%B7%E5%88%86%E7%B1%BB%E5%99%A8">&#x5F02;&#x5E38;&#x8D26;&#x53F7;&#x5206;&#x7C7B;&#x5668;</h1>
+
+<p>&#x4F7F;&#x7528; Gradient Tree Boosting &#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x968F;&#x673A; 8:2 &#x5206;&#x5272;&#x8BAD;&#x7EC3;&#x96C6;&#x6D4B;&#x8BD5;&#x96C6;&#xFF0C;&#x5728;<strong>&#x6D4B;&#x8BD5;&#x96C6;</strong>&#x4E0A;&#x7684;&#x8868;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>Table: <strong>&#x6D4B;&#x8BD5;&#x96C6;</strong>&#x5206;&#x7C7B;&#xFF0C;&#x6B63;&#x786E;&#x7387;90.4%</p>
+<table>
+<thead>
+<tr>
+<th>06/14&#x6570;&#x636E;</th>
+<th>&#x8D1F;&#x6837;&#x672C;</th>
+<th>&#x6B63;&#x6837;&#x672C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x51C6;&#x786E;&#x7387;</td>
+<td>94.6%</td>
+<td>89.8%</td>
+</tr>
+<tr>
+<td>&#x53EC;&#x56DE;&#x7387;</td>
+<td>95.7%</td>
+<td>87.4%</td>
+</tr>
+<tr>
+<td>F score</td>
+<td>95.2%</td>
+<td>88.6%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>&#x52A0;&#x5165;&#x53D8;&#x5316;&#x91CF;</th>
+<th>&#x8D1F;&#x6837;&#x672C;</th>
+<th>&#x6B63;&#x6837;&#x672C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x51C6;&#x786E;&#x7387;</td>
+<td>95.2%</td>
+<td>90.5%</td>
+</tr>
+<tr>
+<td>&#x53EC;&#x56DE;&#x7387;</td>
+<td>96.0%</td>
+<td>88.8%</td>
+</tr>
+<tr>
+<td>F score</td>
+<td>95.6%</td>
+<td>89.7%</td>
+</tr>
+</tbody>
+</table>
+<p>Table: <strong>&#x5168;&#x6837;&#x672C;</strong>&#x5206;&#x7C7B;&#xFF0C;&#x6B63;&#x786E;&#x7387;90.5%</p>
+<table>
+<thead>
+<tr>
+<th>06/14&#x6570;&#x636E;</th>
+<th>&#x8D1F;&#x6837;&#x672C;</th>
+<th>&#x6B63;&#x6837;&#x672C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x51C6;&#x786E;&#x7387;</td>
+<td>96.1%</td>
+<td>92.9%</td>
+</tr>
+<tr>
+<td>&#x53EC;&#x56DE;&#x7387;</td>
+<td>97.0%</td>
+<td>90.9%</td>
+</tr>
+<tr>
+<td>F score</td>
+<td>95.2%</td>
+<td>91.9%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>&#x52A0;&#x5165;&#x53D8;&#x5316;&#x91CF;</th>
+<th>&#x8D1F;&#x6837;&#x672C;</th>
+<th>&#x6B63;&#x6837;&#x672C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x51C6;&#x786E;&#x7387;</td>
+<td>96.1%</td>
+<td>93.4%</td>
+</tr>
+<tr>
+<td>&#x53EC;&#x56DE;&#x7387;</td>
+<td>97.0%</td>
+<td>92.5%</td>
+</tr>
+<tr>
+<td>F score</td>
+<td>96.6%</td>
+<td>93.2%</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5728;<strong>&#x5168;&#x6570;&#x636E;&#x96C6;</strong>&#x4E0A;&#x5206;&#x7C7B;&#x7684;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;&#x5982;&#x4E0B;&#x56FE;&#xFF08;&#x4EC5;&#x7528;06/14&#x6570;&#x636E;&#xFF09;<br>
+<img src="figures/confusion_matrix_xgb_0614_max_depth_2.png"><br>
+&#x52A0;&#x5165;&#x53D8;&#x5316;&#x91CF;&#x7684;&#x6A21;&#x578B;&#x7684;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;&#x5982;&#x4E0B;&#x56FE;<br>
+<img src="figures/confusion_matrix_xgb_diff_max_depth_2.png"><br>
+&#x8BE5;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x51C6;&#x786E;&#x7387;-&#x53EC;&#x56DE;&#x7387;&#x66F2;&#x7EBF;&#x5982;&#x4E0B;&#xFF0C;&#x84DD;&#x8272;&#x66F2;&#x7EBF;&#x4EC5;&#x4F7F;&#x7528;06/14&#x6570;&#x636E;&#xFF0C;&#x7EFF;&#x8272;&#x66F2;&#x7EBF;&#x6A21;&#x578B;&#x52A0;&#x5165;&#x4E86;&#x7279;&#x5F81;&#x53D8;&#x5316;&#x91CF;&#xFF0C;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x63D0;&#x5347;&#x3002;<br>
+<img src="figures/pr_curve_0614_diff_xgb_max_depth_2.png"><br>
+&#x4E0B;&#x56FE;&#x662F;&#x6A21;&#x578B;&#x9884;&#x6D4B;&#x8D26;&#x53F7;&#x5F02;&#x5E38;&#x6982;&#x7387;&#x7684;&#x76F4;&#x65B9;&#x56FE;&#xFF0C;&#x548C;&#x7BB1;&#x578B;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6A21;&#x578B;&#x8FD8;&#x662F;&#x80FD;&#x8F83;&#x597D;&#x7684;&#x533A;&#x5206;&#x6B63;&#x5E38;&#x8D26;&#x53F7;&#x548C;&#x88AB;&#x76D7;&#x8D26;&#x53F7;&#x7684;&#x3002;<br>
+<img src="figures/predicted_proba_hist_xgb_diff_max_depth_2.png"><br>
+<img src="figures/predicted_proba_boxplot_xgb_diff_max_depth_2.png"><br>
+&#x4E0B;&#x56FE;&#x662F;&#x7279;&#x5F81;&#x91CD;&#x8981;&#x6027;&#x6392;&#x5E8F;<br>
+<img src="figures/feature_importance_xgb_0614_max_depth_2.png"><br>
+&#x6B63;&#x5982;&#x6211;&#x4EEC;&#x5728;&#x7279;&#x5F81;&#x5206;&#x5E03;&#x6BD4;&#x8F83;&#x4E2D;&#x6240;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x7279;&#x5F81;&#x6709; <code>chat_num</code>, <code>active_plat_num</code>, <code>del_friend_num</code>, <code>reject_invite_team_num</code>, <code>level</code> &#x7B49;&#x3002;</p>
+<p>&#x4E0B;&#x56FE;&#x662F;&#x52A0;&#x5165;&#x53D8;&#x5316;&#x91CF;&#x540E;&#x7684;&#x6A21;&#x578B;&#x7684;&#x91CD;&#x8981;&#x6027;<br>
+<img src="figures/feature_importance_xgb_diff_max_depth_2.png"></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
