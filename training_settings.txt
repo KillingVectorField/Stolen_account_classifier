@@ -5,8 +5,8 @@ stealing_accounts file 2: [data/20210621_steal_fea_data.txt]
 normal_accounts file 0: [data/20210607_normal_data_fea_v2.txt]
 normal_accounts file 1: [data/20210614_normal_data_fea_v2.txt]
 normal_accounts file 2: [data/20210621_normal_data_fea_v2.txt]
-model type: DNN
-save model file: models/clf_dnn_june_data_3weeks_2layers_64_32.h5
+model type: XGBoost
+save model file: models/clf_xgb_june_data_3weeks_max_depth_2.pickle
 generate plots: No
 precision recall curve: figures/pr_curve_3weeks_dnn_2layers_64_32.png
 confusion matrix: figures/confusion_matrix_3weeks_dnn_2layers_64_32.png

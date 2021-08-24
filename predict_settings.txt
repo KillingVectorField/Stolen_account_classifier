@@ -1,8 +1,8 @@
 how many weeks of data to be used: 3
-trained model file: models/clf_dnn_june_data_3weeks_2layers_64_32.h5
+trained model file: models/clf_xgb_june_data_3weeks_max_depth_2.pickle
 predictors file 0: [data/stealing_real_accounts_20210810_20210817_feature_20210719.txt]
 predictors file 1: [data/stealing_real_accounts_20210810_20210817_feature_20210726.txt]
 predictors file 2: [data/stealing_real_accounts_20210810_20210817_feature_20210802.txt]
-output file name: output/predict_proba_DNN_3weeks.txt
-generate plots: True
+output file name: output/predict_proba_xgb_3weeks.txt
+generate plots: No
 savefig name: figures/predict_proba_hist_new_X_DNN_3weeks.png

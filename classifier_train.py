@@ -109,6 +109,11 @@ X.drop(na_uid, inplace=True)
 y = all_accounts["is_steal"]
 y.drop(na_uid, inplace=True)
 
+X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2, random_state=42) # 8:2 分割训练集测试集
+
+model_type = my_readline()
+print("Modelling method:", model_type)
+
 # 神经网络分类器
 # from sklearn import neural_network as nn
 # clf_mlp = nn.MLPClassifier((64, 64), verbose=True, max_iter=500)
@@ -116,8 +121,6 @@ y.drop(na_uid, inplace=True)
 # pr_mlp = metrics.precision_recall_curve(y, clf_mlp.predict_proba(X)[:,1])
 # metrics.plot_confusion_matrix(clf_mlp, X, y)
 # precision_recall_fscore_support_clf_mlp = metrics.precision_recall_fscore_support(y, clf_mlp.predict(X))
-model_type = my_readline()
-print("Modelling method:", model_type)
 
 if model_type.lower()=="dnn":
     import tensorflow as tf
@@ -128,9 +131,9 @@ if model_type.lower()=="dnn":
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
 
-    clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=10)
-
-    clf.fit(X, y)
+    clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=10, validation_data = (X_test, y_test))
+    
+    clf.fit(X_train, y_train)
 
 # Gradient boosting 分类器
 # clf_gb = ensemble.GradientBoostingClassifier(n_estimators=1000, learning_rate=1.0, max_depth=2, random_state=0, verbose=True)
@@ -139,7 +142,9 @@ if model_type.lower()=="dnn":
 elif model_type.lower() in ['xgb', 'xgboost']:
     # XGBoost 分类器
     from xgboost import XGBClassifier
-    clf = XGBClassifier(n_estimators=1000, use_label_encoder = False, learning_rate=1.0, max_depth=2, random_state=0, verbosity=0)
+    clf = XGBClassifier(n_estimators=500, use_label_encoder = False, learning_rate=1.0, max_depth=2, random_state=0, verbosity=0)
+
+    clf.fit(X_train,y_train, eval_set=[(X_train, y_train), (X_test, y_test)], eval_metric='logloss')
     clf.fit(X,y)
 
 
@@ -168,7 +173,8 @@ print("Training accuracy:", clf.score(X,y)) # 正确率
 pr_xgb_diff = metrics.precision_recall_curve(y, clf.predict_proba(X)[:,1]) # 用06/14数据，以及纵向变化量的准召曲线
 # precision_recall_fscore_support_clf_0614= metrics.precision_recall_fscore_support(y, clf.predict(X)) # 仅用06/14数据
 precision_recall_fscore_support_clf_diff= metrics.precision_recall_fscore_support(y, clf.predict(X)) # 用06/14数据，以及纵向变化量
-print("precision_recall_fscore_support:", precision_recall_fscore_support_clf_diff)
+print("precision_recall_fscore_support:")
+print(precision_recall_fscore_support_clf_diff)
 print("Confusion matrix:")
 print(metrics.confusion_matrix(y, clf.predict(X)))
 
