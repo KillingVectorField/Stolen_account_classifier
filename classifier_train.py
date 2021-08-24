@@ -169,6 +169,8 @@ pr_xgb_diff = metrics.precision_recall_curve(y, clf.predict_proba(X)[:,1]) # 用
 # precision_recall_fscore_support_clf_0614= metrics.precision_recall_fscore_support(y, clf.predict(X)) # 仅用06/14数据
 precision_recall_fscore_support_clf_diff= metrics.precision_recall_fscore_support(y, clf.predict(X)) # 用06/14数据，以及纵向变化量
 print("precision_recall_fscore_support:", precision_recall_fscore_support_clf_diff)
+print("Confusion matrix:")
+print(metrics.confusion_matrix(y, clf.predict(X)))
 
 if my_readline().lower() in ["true", "t", "yes", "y"]:
     # 绘制准召曲线
@@ -186,8 +188,6 @@ if my_readline().lower() in ["true", "t", "yes", "y"]:
     plt.show()
 
     # 混淆矩阵
-    print("Confusion matrix:")
-    print(metrics.confusion_matrix(y, clf.predict(X)))
     if model_type.lower() in ['xgboost','xgb']:
         #绘制混淆矩阵
         metrics.plot_confusion_matrix(clf, X, y)
