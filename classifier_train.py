@@ -1,5 +1,4 @@
 # %%
-import xgboost
 from model_settings import *
 import numpy as np
 import pandas as pd
@@ -129,9 +128,11 @@ if model_type.lower()=="dnn":
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy', 'Precision', 'Recall'])
         return model
 
-    clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=10, validation_data = (X_test, y_test))
-    
+    clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=50, validation_data = (X_test, y_test))
     clf.fit(X_train, y_train)
+
+    # clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=50)
+    # clf.fit(X, y)
 
 # Gradient boosting Classifier
 # clf_gb = ensemble.GradientBoostingClassifier(n_estimators=1000, learning_rate=1.0, max_depth=2, random_state=0, verbose=True)
