@@ -12,10 +12,11 @@ performance = ["avg_kill_count", "avg_hit_rate", "chicken_rate", "top10_rate", "
 
 diff_list = ["del_friend_num", "friend_num_game", "skin_num", "active_plat_num", "chat_num", "ip_counts", "round_squad_num", "level", "funny_num"] # 需要考虑纵向变化量的变量
 
-def read_longitudinal_date(file_list, keep_shared = True):
+def read_longitudinal_date(file_list, keep_shared = True, verbose = 0):
     '''
-    读取多个文件的玩家特征数据（通常为连续几周的数据）
-    keep_shared: 是否只保留每周都有数据的玩家
+    read feature data of consecutive weeks
+    keep_shared: only to keep users with uid appearing in every data file
+    verbose: if verbose > 0, print data info 
     '''
     account_by_dates = []
     for file in file_list:
@@ -28,7 +29,8 @@ def read_longitudinal_date(file_list, keep_shared = True):
                                 na_values=['-1', '\\N'])
         df.drop(np.where(df["uid"].apply(type) != str )[0], inplace=True)
         df = df[np.logical_not(df["uid"].duplicated())]
-        print(file, df.shape)
+        if verbose:
+            print(file, df.shape)
         account_by_dates.append(df)
         del(df)
 
@@ -36,7 +38,8 @@ def read_longitudinal_date(file_list, keep_shared = True):
         shared_uid = account_by_dates[0]["uid"]
         for df in account_by_dates[1:]:
             shared_uid = np.intersect1d(shared_uid, df["uid"], assume_unique=True)
-        print("number of shared uid:", len(shared_uid))
+        if verbose:
+            print("number of shared uid:", len(shared_uid))
 
         return [df.set_index("uid").loc[shared_uid] for df in account_by_dates]
     

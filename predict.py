@@ -27,7 +27,7 @@ if model_file.endswith('h5'):
     clf.model = keras.models.load_model(model_file)
 elif model_file.endswith('pickle'):
     with open(model_file, 'rb') as f:
-        clf = pickle.load(f) # 从本地文件中导入模型
+        clf = pickle.load(f) # load model from file
 
 #new_account_file_list = [r'data/' + 'stealing_real_accounts_20210810_20210817_feature_2021' + date +'.txt' for date in ['0719', '0726', '0802']]
 new_account_file_list = [[s.strip() for s in my_readline()[1:-1].split(',')] for _ in range(use_weeks)]
