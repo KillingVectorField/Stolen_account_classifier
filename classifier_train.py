@@ -128,7 +128,7 @@ if model_type.lower()=="dnn":
     def create_model():
         # create model
         model = keras.Sequential([keras.layers.Flatten(input_shape=(X.shape[1],)), keras.layers.Dense(64, activation='relu'), keras.layers.Dense(32, activation='relu'), keras.layers.Dense(1, activation='sigmoid')])
-        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy', 'Precision', 'Recall'])
         return model
 
     clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=10, validation_data = (X_test, y_test))
