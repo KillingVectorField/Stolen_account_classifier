@@ -5,10 +5,11 @@ stealing_accounts file 2: [data/20210621_steal_fea_data.txt]
 normal_accounts file 0: [data/20210607_normal_data_fea_v2.txt]
 normal_accounts file 1: [data/20210614_normal_data_fea_v2.txt]
 normal_accounts file 2: [data/20210621_normal_data_fea_v2.txt]
-save model file: models/clf_xgb_june_data_3weeks_max_depth_2.pickle
+model type: DNN
+save model file: models/clf_dnn_june_data_3weeks_2layers_64_32.h5
 generate plots: No
-precision recall curve: figures/pr_curve_0614_diff1_xgb_max_depth_2.png
-confusion matrix: figures/confusion_matrix_xgb_diff1_max_depth_2.png
-feature importances: feature_importance_xgb_diff1_max_depth_2.png
-predicted_proba histogram: figures/predicted_proba_hist_xgb_diff1_max_depth_2.png
-predicted_proba boxplot: figures/predicted_proba_boxplot_xgb_diff1_max_depth_2.png
+precision recall curve: figures/pr_curve_3weeks_dnn_2layers_64_32.png
+confusion matrix: figures/confusion_matrix_3weeks_dnn_2layers_64_32.png
+feature importances: feature_importance_3weeks_dnn_2layers_64_32.png
+predicted_proba histogram: figures/predicted_proba_hist_3weeks_dnn_2layers_64_32.png
+predicted_proba boxplot: figures/predicted_proba_boxplot_3weeks_dnn_2layers_64_32.png

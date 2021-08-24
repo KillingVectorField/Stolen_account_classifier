@@ -1,6 +1,7 @@
 # 要添加一个新单元，输入 '# %%'
 # 要添加一个新的标记单元，输入 '# %% [markdown]'
 # %%
+import xgboost
 from model_settings import *
 import numpy as np
 import pandas as pd
@@ -8,7 +9,7 @@ from matplotlib import pyplot as plt, use
 import pickle
 import seaborn as sns
 from sklearn import metrics, model_selection
-from xgboost import XGBClassifier
+
 # sns.set_theme(style="ticks")
 
 settings = open("training_settings.txt", "rb")
@@ -115,45 +116,66 @@ y.drop(na_uid, inplace=True)
 # pr_mlp = metrics.precision_recall_curve(y, clf_mlp.predict_proba(X)[:,1])
 # metrics.plot_confusion_matrix(clf_mlp, X, y)
 # precision_recall_fscore_support_clf_mlp = metrics.precision_recall_fscore_support(y, clf_mlp.predict(X))
+model_type = my_readline()
+print("Modelling method:", model_type)
+
+if model_type.lower()=="dnn":
+    import tensorflow as tf
+    from tensorflow import keras
+    def create_model():
+        # create model
+        model = keras.Sequential([keras.layers.Flatten(input_shape=(X.shape[1],)), keras.layers.Dense(64, activation='relu'), keras.layers.Dense(32, activation='relu'), keras.layers.Dense(1, activation='sigmoid')])
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        return model
+
+    clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=10)
+
+    clf.fit(X, y)
 
 # Gradient boosting 分类器
 # clf_gb = ensemble.GradientBoostingClassifier(n_estimators=1000, learning_rate=1.0, max_depth=2, random_state=0, verbose=True)
 # clf_gb.fit(X,y)
 
-# XGBoost 分类器
-clf_xgb = XGBClassifier(n_estimators=1000, use_label_encoder = False, learning_rate=1.0, max_depth=2, random_state=0, verbosity=0)
-clf_xgb.fit(X,y)
+elif model_type.lower() in ['xgb', 'xgboost']:
+    # XGBoost 分类器
+    from xgboost import XGBClassifier
+    clf = XGBClassifier(n_estimators=1000, use_label_encoder = False, learning_rate=1.0, max_depth=2, random_state=0, verbosity=0)
+    clf.fit(X,y)
+
 
 # 保存模型到本地文件
 model_file = my_readline()
-with open(model_file, 'wb') as f:
-    pickle.dump(clf_xgb, f)
+if model_type.lower()=="dnn":
+    clf.model.save(model_file)
+elif model_type.lower() in ['xgb', 'xgboost']:
+    with open(model_file, 'wb') as f:
+        pickle.dump(clf, f)
 print("model saved:", model_file)
 
 # with open(r'models/clf_xgb_0614_diff2_max_depth_2.pickle', 'wb') as f:
-#     pickle.dump(clf_xgb, f)
+#     pickle.dump(clf, f)
 
 # with open(r'models/clf_xgb_0614_diff2_max_depth_2.pickle', 'rb') as f:
-#     clf_xgb = pickle.load(f) # 从本地文件中导入模型
+#     clf = pickle.load(f) # 从本地文件中导入模型
 
 # 模型评估
-print("Training accuracy:", clf_xgb.score(X,y)) # 正确率
+print("Training accuracy:", clf.score(X,y)) # 正确率
 
-# model_selection.cross_val_score(clf_xgb, X, y, cv=5).mean() # CV 正确率
+# model_selection.cross_val_score(clf, X, y, cv=5).mean() # CV 正确率
 
 # 准确率、召回率、F score，以及准召曲线
-# pr_xgb_0614 = metrics.precision_recall_curve(y, clf_xgb.predict_proba(X)[:,1]) # 仅用06/14数据的准召曲线
-pr_xgb_diff = metrics.precision_recall_curve(y, clf_xgb.predict_proba(X)[:,1]) # 用06/14数据，以及纵向变化量的准召曲线
-# precision_recall_fscore_support_clf_xgb_0614= metrics.precision_recall_fscore_support(y, clf_xgb.predict(X)) # 仅用06/14数据
-precision_recall_fscore_support_clf_xgb_diff= metrics.precision_recall_fscore_support(y, clf_xgb.predict(X)) # 用06/14数据，以及纵向变化量
-print("precision_recall_fscore_support:", precision_recall_fscore_support_clf_xgb_diff)
+# pr_xgb_0614 = metrics.precision_recall_curve(y, clf.predict_proba(X)[:,1]) # 仅用06/14数据的准召曲线
+pr_xgb_diff = metrics.precision_recall_curve(y, clf.predict_proba(X)[:,1]) # 用06/14数据，以及纵向变化量的准召曲线
+# precision_recall_fscore_support_clf_0614= metrics.precision_recall_fscore_support(y, clf.predict(X)) # 仅用06/14数据
+precision_recall_fscore_support_clf_diff= metrics.precision_recall_fscore_support(y, clf.predict(X)) # 用06/14数据，以及纵向变化量
+print("precision_recall_fscore_support:", precision_recall_fscore_support_clf_diff)
 
 if my_readline().lower() in ["true", "t", "yes", "y"]:
     # 绘制准召曲线
     # plt.plot(pr_xgb_0614[0], pr_xgb_0614[1], label = "XGB 0614")
-    # plt.plot([precision_recall_fscore_support_clf_xgb_0614[0][1]],[precision_recall_fscore_support_clf_xgb_0614[1][1]], "x", label="XGB 0614")
+    # plt.plot([precision_recall_fscore_support_clf_0614[0][1]],[precision_recall_fscore_support_clf_0614[1][1]], "x", label="XGB 0614")
     plt.plot(pr_xgb_diff[0], pr_xgb_diff[1], label = "XGB including diff")
-    plt.plot([precision_recall_fscore_support_clf_xgb_diff[0][1]],[precision_recall_fscore_support_clf_xgb_diff[1][1]], "x", label="XGB including diff")
+    plt.plot([precision_recall_fscore_support_clf_diff[0][1]],[precision_recall_fscore_support_clf_diff[1][1]], "x", label="XGB including diff")
     # plt.plot(pr_mlp[0], pr_mlp[1], label = "DNN")
     # plt.plot([precision_recall_fscore_support_clf_mlp[0][1]],[precision_recall_fscore_support_clf_mlp[1][1]], "x", label="current DNN diff")
     plt.xlabel("precision")
@@ -164,30 +186,36 @@ if my_readline().lower() in ["true", "t", "yes", "y"]:
     plt.show()
 
     # 混淆矩阵
-    metrics.plot_confusion_matrix(clf_xgb, X, y)
-    #plt.savefig(r'figures/confusion_matrix_xgb_diff_max_depth_2.png')
-    plt.savefig(my_readline())
-    plt.show()
+    print("Confusion matrix:")
+    print(metrics.confusion_matrix(y, clf.predict(X)))
+    if model_type.lower() in ['xgboost','xgb']:
+        #绘制混淆矩阵
+        metrics.plot_confusion_matrix(clf, X, y)
+        #plt.savefig(r'figures/confusion_matrix_xgb_diff_max_depth_2.png')
+        plt.savefig(my_readline())
+        plt.show()
 
-    # 特征重要性排序
-    importance_rank = clf_xgb.feature_importances_.argsort()
-    show_features_num = 15
-    plt.figure(figsize=[10.5,6])
-    plt.barh(range(show_features_num), np.sort(clf_xgb.feature_importances_)[-show_features_num:], height=0.7, color='steelblue', alpha=0.8)      # 从下往上画
-    plt.yticks(range(show_features_num), X.columns[importance_rank][-show_features_num:])
-    #plt.title("XGB 20210614 data")
-    plt.title("XGB Including Difference")
-    #plt.savefig(r'figures/feature_importance_xgb_diff_max_depth_2.png')
-    plt.savefig(my_readline())
-    plt.show()
+        # 特征重要性排序
+        importance_rank = clf.feature_importances_.argsort()
+        show_features_num = 15
+        plt.figure(figsize=[10.5,6])
+        plt.barh(range(show_features_num), np.sort(clf.feature_importances_)[-show_features_num:], height=0.7, color='steelblue', alpha=0.8)      # 从下往上画
+        plt.yticks(range(show_features_num), X.columns[importance_rank][-show_features_num:])
+        #plt.title("XGB 20210614 data")
+        plt.title("XGB Including Difference")
+        #plt.savefig(r'figures/feature_importance_xgb_diff_max_depth_2.png')
+        plt.savefig(my_readline())
+        plt.show()
+    else:
+        [my_readline() for _ in range(2)]
 
     # 训练样本的打分分布
-    sns.histplot(x = clf_xgb.predict_proba(X)[:,1], hue = y)
+    sns.histplot(x = clf.predict_proba(X)[:,1], hue = y)
     #plt.savefig(r'figures/predicted_proba_hist_xgb_diff_max_depth_2.png')
     plt.savefig(my_readline())
     plt.show()
 
-    sns.boxplot(x=y, y=clf_xgb.predict_proba(X)[:,1])
+    sns.boxplot(x=y, y=clf.predict_proba(X)[:,1])
     plt.ylabel("predicted prob")
     #plt.savefig(r'figures/predicted_proba_boxplot_xgb_diff_max_depth_2.png')
     plt.savefig(my_readline())
@@ -195,10 +223,10 @@ if my_readline().lower() in ["true", "t", "yes", "y"]:
 
 # 测试集表现
 # X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2, random_state=42) # 8:2 分割训练集测试集
-# clf_xgb_train = XGBClassifier(n_estimators=1000, use_label_encoder = False, learning_rate=1.0, max_depth=2, random_state=0, verbosity=0)
-# clf_xgb_train.fit(X_train, y_train)
+# clf_train = XGBClassifier(n_estimators=1000, use_label_encoder = False, learning_rate=1.0, max_depth=2, random_state=0, verbosity=0)
+# clf_train.fit(X_train, y_train)
 
-# clf_xgb_train.score(X_train,y_train)
-# clf_xgb_train.score(X_test,y_test)
-# metrics.plot_confusion_matrix(clf_xgb_train, X_test, y_test)
-# metrics.precision_recall_fscore_support(y_test, clf_xgb_train.predict(X_test))
+# clf_train.score(X_train,y_train)
+# clf_train.score(X_test,y_test)
+# metrics.plot_confusion_matrix(clf_train, X_test, y_test)
+# metrics.precision_recall_fscore_support(y_test, clf_train.predict(X_test))

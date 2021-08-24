@@ -13,8 +13,21 @@ def my_readline():
 
 use_weeks = int(my_readline())
 
-with open(my_readline(), 'rb') as f:
-    clf = pickle.load(f) # 从本地文件中导入模型
+model_file = my_readline()
+if model_file.endswith('h5'):
+    import tensorflow as tf
+    from tensorflow import keras
+    def create_model():
+        # create model
+        model = keras.Sequential([keras.layers.Flatten(input_shape=(10,)), keras.layers.Dense(64, activation='relu'), keras.layers.Dense(32, activation='relu'), keras.layers.Dense(1, activation='sigmoid')])
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        return model
+
+    clf = keras.wrappers.scikit_learn.KerasClassifier(build_fn=create_model, epochs=10)
+    clf.model = keras.models.load_model(model_file)
+elif model_file.endswith('pickle'):
+    with open(model_file, 'rb') as f:
+        clf = pickle.load(f) # 从本地文件中导入模型
 
 #new_account_file_list = [r'data/' + 'stealing_real_accounts_20210810_20210817_feature_2021' + date +'.txt' for date in ['0719', '0726', '0802']]
 new_account_file_list = [[s.strip() for s in my_readline()[1:-1].split(',')] for _ in range(use_weeks)]
@@ -50,17 +63,18 @@ new_X.drop(na_uid, inplace=True)
 predicted_proba = clf.predict_proba(new_X)[:,1]
 print("positive proportion (threshold=0.5): ", (predicted_proba > 0.5).mean())
 
-importance_rank = clf.feature_importances_.argsort()
-show_features_num = 20
-importance_list = []
-for feature, score in zip(new_X.columns[importance_rank][::-1][:show_features_num].tolist(), np.sort(clf.feature_importances_)[::-1][:show_features_num] * 100):
-    importance_list.append(feature+':{score:.2f}'.format(score=score))
-
 output = new_accounts[["vopenid"]].drop(na_uid)
 output["predicted_proba"] = predicted_proba
-tmp = [''] * output.shape[0]
-tmp[:show_features_num] = importance_list
-output["feature_importances"] = tmp
+
+if model_file.endswith('pickle'):
+    importance_rank = clf.feature_importances_.argsort()
+    show_features_num = 20
+    importance_list = []
+    for feature, score in zip(new_X.columns[importance_rank][::-1][:show_features_num].tolist(), np.sort(clf.feature_importances_)[::-1][:show_features_num] * 100):
+        importance_list.append(feature+':{score:.2f}'.format(score=score))
+    tmp = [''] * output.shape[0]
+    tmp[:show_features_num] = importance_list
+    output["feature_importances"] = tmp
 
 # 保存预测概率至本地文件
 output_file = my_readline()

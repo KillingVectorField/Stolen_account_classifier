@@ -13,6 +13,7 @@ stealing_accounts file 1: [data/20210614_steal_fea_data.txt, data/stealing_real_
 stealing_accounts file 2: [data/20210621_steal_fea_data.txt, data/stealing_real_accounts_20210810_20210817_feature_20210802.txt]
 **如果只用2周的数据，则只使用第0周和第1周，第2周路径可以随意填写，将不被使用；如果只用1周的数据，则只使用第0周，第1周和第2周路径可以随意填写，将不被使用**
 + 负样本（正常账号）数据路径
++ 采用什么模型？可以填 "Xgboost" 或 "DNN"
 + 训练好的模型的保存路径
 + 是否保存图片: True/False
 + 图片保存路径（仅当True时有效），描述模型效果的图片，如混淆矩阵，准确率召回率曲线，特征重要性排序等
