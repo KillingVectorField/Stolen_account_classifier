@@ -7,7 +7,7 @@
     - 若输入3，则使用 `stealing_accounts file 0` `stealing_accounts file 1` `stealing_accounts file 2` 和 `normal_accounts file 0` `normal_accounts file 1` `normal_accounts file 2` 的数据，分别为第0周，第1周，和第2周，模型包含第0周到第2周的特征变化量
 + 正样本（被盗账号）数据路径
 可以放入多组样本，格式为[file_0, file_1, ...]
-如我们使用两组数据的stealed accounts：
+如我们使用两组数据的stolen accounts：
 stealing_accounts file 0: [data/20210607_steal_fea_data.txt, data/stealing_real_accounts_20210810_20210817_feature_20210719.txt]
 stealing_accounts file 1: [data/20210614_steal_fea_data.txt, data/stealing_real_accounts_20210810_20210817_feature_20210726.txt]
 stealing_accounts file 2: [data/20210621_steal_fea_data.txt, data/stealing_real_accounts_20210810_20210817_feature_20210802.txt]
